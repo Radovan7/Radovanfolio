@@ -21,12 +21,12 @@ const Footer = () => {
       }}
     >
       <Typography  variant="body2" sx={{ mb: 1 }}>
-        © {new Date().getFullYear()} React Portfolio. All rights reserved.
+        © {new Date().getFullYear()} Portfolio. All rights reserved.
       </Typography>
       <Typography variant="body2">
         Built with ❤️ by{' '}
-        <Link href="https://github.com/0MeMo07"  variant="body2" target="_blank" rel="noopener noreferrer">
-          MeMo
+        <Link href="https://github.com/Radovan7"  variant="body2" target="_blank" rel="noopener noreferrer">
+          Radovan
         </Link>
       </Typography>
     </Box>

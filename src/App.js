@@ -12,7 +12,7 @@ const App = () => {
   return (
     <>
       <Helmet>
-        <title>React Editable Portfolio</title>
+        <title>Radovan Portfolio</title>
       </Helmet>
       <Home />
       <Divider sx={{  position: 'relative', backgroundColor: theme.palette.divider.main }} />
