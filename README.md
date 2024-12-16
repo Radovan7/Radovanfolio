@@ -5,7 +5,7 @@ A modern, responsive portfolio website built with React, showcasing projects and
 [![GitHub Stars](https://img.shields.io/github/stars/Radovan7/Radovanfolio?style=for-the-badge&logo=github)](https://github.com/Radovan7/Radovanfolio)
 [![GitHub Forks](https://img.shields.io/github/forks/Radovan7/Radovanfolio?style=for-the-badge&logo=github)](https://github.com/Radovan7/Radovanfolio)
 [![GitHub Watchers](https://img.shields.io/github/watchers/Radovan7/Radovanfolio?style=for-the-badge&logo=github)](https://github.com/Radovan7/Radovanfolio)
-![Portfolio Image](images/PortfolioDevices.png)
+
 
 ## Table of Contents
 

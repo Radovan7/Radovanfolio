@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import BackgroundBg from './bg/BackgroundBg';
 import profile from '../profile'; 
 import { useTheme } from '@mui/material/styles';
+import { Helmet } from 'react-helmet'; 
 
 const Home = () => {
   const { home } = profile;
@@ -16,6 +17,15 @@ const Home = () => {
 
   return (
     <>
+      {}
+      <Helmet>
+        <meta name="description" content="Radovan's Portfolio - Frontend Developer | Open Source Enthusiast" />
+        <meta name="keywords" content="portfolio, frontend developer, open source, React, JavaScript, web development" />
+        <meta property="og:title" content="Radovan Portfolio" />
+        <meta property="og:description" content="Welcome to my portfolio! I'm a passionate frontend developer..." />
+        <title>Radovan Portfolio</title>
+      </Helmet>
+
       <BackgroundBg />
       <Container
         maxWidth="lg"
@@ -43,8 +53,9 @@ const Home = () => {
               whileTap={{ scale: 0.95 }}
             >
               <Avatar
-                alt="Profile Avatar"
-                src={home.avatarUrl}
+                alt="Radovan's Profile Picture"
+                loading="lazy"
+                src={home.avatarUrl}  
                 sx={{
                   width: 200,
                   height: 200,
@@ -114,7 +125,6 @@ const Home = () => {
                 textTransform: 'uppercase',
                 letterSpacing: 1,
                 borderRadius: '30px',
-                // boxShadow: `0 4px 6px ${theme.palette.primary.main}80`,
                 '&:hover': {
                   backgroundColor: theme.palette.primary.dark,
                 },

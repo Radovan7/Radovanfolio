@@ -5,7 +5,9 @@ import {
 import { 
   SiMui, SiTypescript, SiNextdotjs 
 } from 'react-icons/si';
-import myPhoto from './components/assets/profile.photo.jpg';
+import myPhoto from './components/assets/profile.photo.webp';
+
+
 
 
 const profile = {
@@ -42,15 +44,16 @@ const profile = {
             link: 'https://github.com/Radovan7/webbyra-sodermalm.git',
         },
         {
-            title: 'URL-Seeker',
-            description: 'An advanced dorking tool to discover URLs associated with the target domain',
-            link: 'https://github.com/0MeMo07/URL-Seeker',
+            title: 'To-Do List',
+            description: 'A simple and interactive To-Do List application built with HTML, CSS, and JavaScript, designed to help manage daily tasks efficiently.',
+            link: 'https://github.com/Radovan7/To-Do-list.git',
         },
         {
-            title: 'gpt-4-free-chat',
-            description: 'A GPT GLM-4 free chat AI built with React',
-            link: 'https://0memo07.github.io/gpt-4-free-chat/',
-        },
+            title: 'User Posts',
+            description: 'A React app that fetches and displays user information and posts from the JSONPlaceholder API, allowing users to interact with posts and view user data.',
+            link: 'https://github.com/Radovan7/User-posts.git',
+        }
+        
     ],
     contact: {
         title: "Contact Me",
