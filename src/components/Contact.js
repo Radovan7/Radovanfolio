@@ -173,6 +173,22 @@ const Contact = () => {
                   </IconButton>
                 ))}
               </Box>
+              <Box sx={{ mt: 4 }}>
+                <Button
+                  variant="contained"
+                  href="/CV E.pdf" 
+                  download="CV E.pdf" 
+                  sx={{
+                    backgroundColor: theme.palette.primary.main, 
+                    color: theme.palette.primary.contrastText, 
+                    '&:hover': {
+                      backgroundColor: theme.palette.primary.light,
+                    },
+                  }}
+                >
+                  Download CV
+                </Button>
+              </Box>
             </Grid>
           </Grid>
         </form>
