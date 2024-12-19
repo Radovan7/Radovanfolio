@@ -41,7 +41,7 @@ const profile = {
         {
             title: 'Webbyra-sodermalm',
             description: 'Responsive marketing agency website built with React, Node.js, and TailwindCSS.',
-            link: 'https://github.com/Radovan7/webbyra-sodermalm.git',
+            link: 'https://webbyrasodermalm.se/',
         },
         {
             title: 'To-Do List',
