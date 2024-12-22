@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Container, Typography, Box, TextField, Button, Grid, IconButton } from '@mui/material';
 import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
@@ -9,26 +9,29 @@ import emailjs from 'emailjs-com';
 const Contact = () => {
   const { contact } = profile;
   const theme = useTheme();
+  const [messageStatus, setMessageStatus] = useState(null); 
 
   const sendEmail = (e) => {
     e.preventDefault();
 
-    emailjs.sendForm(
-      process.env.REACT_APP_EMAILJS_SERVICE_ID,
-      process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
-      e.target,
-      process.env.REACT_APP_EMAILJS_USER_ID
-    )
-    .then((result) => {
-      console.log(result.text);
-      alert('Message sent successfully!');
-  
-      e.target.reset(); 
-    })
-    .catch((error) => {
-      console.log(error.text);
-      alert('Failed to send message. Please try again.');
-    });
+      emailjs
+      .sendForm(
+        process.env.REACT_APP_EMAILJS_SERVICE_ID,
+        process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
+        e.target,
+        process.env.REACT_APP_EMAILJS_USER_ID
+      )
+      .then((result) => {
+        console.log(result.text);
+        setMessageStatus({ success: true, text: 'Message sent successfully!' });
+      })
+      .catch((error) => {
+        console.log(error.text);
+        setMessageStatus({ success: false, text: 'Failed to send message. Please try again.' });
+      });
+
+    e.target.reset(); 
+
   };
 
   return (
@@ -43,17 +46,17 @@ const Contact = () => {
         zIndex: 100,
         minHeight: '100vh',
         display: 'flex',
-        backgroundColor: theme.palette.background.default, 
-        justifyContent: 'center',
+        flexDirection: 'column',
         alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: theme.palette.background.default,
         color: theme.palette.text.primary,
-        textAlign: 'center',
         py: 8,
         px: 4,
       }}
     >
-      <Box width="100%" maxWidth="md">
-        <Typography variant="h2" component="h1" gutterBottom sx={{ fontWeight: 700 }}>
+      <Box width="100%" maxWidth="400px" sx={{ textAlign: 'center', mb: 4 }}>
+        <Typography variant="h4" component="h1" gutterBottom sx={{ fontWeight: 700 }}>
           {contact.title}
         </Typography>
         <TypeAnimation
@@ -61,140 +64,146 @@ const Contact = () => {
           wrapper="span"
           cursor={true}
           repeat={0}
-          style={{ display: 'inline-block', marginBottom: '30px', color: theme.palette.text.secondary }} 
+          style={{ display: 'inline-block', marginBottom: '20px', color: theme.palette.text.secondary, fontSize: '0.9rem' }}
         />
+      </Box>
 
-        <form onSubmit={sendEmail}>
-          <Grid container spacing={4}>
-            <Grid item xs={12} md={6}>
-              <TextField
-                fullWidth
-                label={contact.nameLabel}
-                variant="outlined"
-                name="from_name"
-                sx={{
-                  input: { color: theme.palette.text.primary }, 
-                  label: { color: theme.palette.text.secondary },
-                  '& .MuiOutlinedInput-root': {
-                    '& fieldset': {
-                      borderColor: theme.palette.primary.main, 
-                    },
-                    '&:hover fieldset': {
-                      borderColor: theme.palette.primary.light, 
-                    },
-                    '&.Mui-focused fieldset': {
-                      borderColor: theme.palette.primary.dark, 
-                    },
-                  },
-                  mb: 3,
-                }}
-              />
-              <TextField
-                fullWidth
-                label={contact.emailLabel}
-                variant="outlined"
-                type="email"
-                name="from_email"
-                sx={{
-                  input: { color: theme.palette.text.primary },
-                  label: { color: theme.palette.text.secondary },
-                  '& .MuiOutlinedInput-root': {
-                    '& fieldset': {
-                      borderColor: theme.palette.primary.main,
-                    },
-                    '&:hover fieldset': {
-                      borderColor: theme.palette.primary.light,
-                    },
-                    '&.Mui-focused fieldset': {
-                      borderColor: theme.palette.primary.dark,
-                    },
-                  },
-                  mb: 3,
-                }}
-              />
-              <TextField
-                fullWidth
-                label={contact.messageLabel}
-                variant="outlined"
-                multiline
-                rows={6}
-                name="message"
-                sx={{
-                  input: { color: theme.palette.text.primary },
-                  label: { color: theme.palette.text.secondary },
-                  '& .MuiOutlinedInput-root': {
-                    '& fieldset': {
-                      borderColor: theme.palette.primary.main,
-                    },
-                    '&:hover fieldset': {
-                      borderColor: theme.palette.primary.light,
-                    },
-                    '&.Mui-focused fieldset': {
-                      borderColor: theme.palette.primary.dark,
-                    },
-                  },
-                  mb: 3,
-                }}
-              />
-              <Button
-                variant="contained"
-                type="submit"
-                sx={{
-                  backgroundColor: theme.palette.primary.main, 
-                  color: theme.palette.primary.contrastText, 
-                  '&:hover': {
-                    backgroundColor: theme.palette.primary.light,
-                  },
-                }}
-                fullWidth
-              >
-                {contact.sendButton}
-              </Button>
-            </Grid>
-
-            <Grid item xs={12} md={6} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-              <Typography variant="h6" gutterBottom sx={{ color: theme.palette.secondary.main, fontWeight: 700 }}>
-                {contact.connectTitle}
-              </Typography>
-              <Box sx={{ display: 'flex', justifyContent: 'center', mt: 2 }}>
-                {contact.links.map((link, index) => (
-                  <IconButton
-                    key={index}
-                    component="a"
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    sx={{
-                      mx: 1,
-                      color: theme.palette.icon.main,
-                      '&:hover': {
-                        color: theme.palette.icon.hover, 
-                      },
-                    }}
-                  >
-                    <link.icon />
-                  </IconButton>
-                ))}
-              </Box>
-              <Box sx={{ mt: 4 }}>
-                <Button
-                  variant="contained"
-                  href="/CV E.pdf" 
-                  download="CV E.pdf" 
-                  sx={{
-                    backgroundColor: theme.palette.primary.main, 
-                    color: theme.palette.primary.contrastText, 
-                    '&:hover': {
-                      backgroundColor: theme.palette.primary.light,
-                    },
-                  }}
-                >
-                  Download CV
-                </Button>
-              </Box>
-            </Grid>
+      <Box width="100%" maxWidth="400px" component="form" onSubmit={sendEmail} sx={{ mb: 4 }}>
+        <Grid container spacing={2}>
+          <Grid item xs={12}>
+            <TextField
+              fullWidth
+              label={contact.nameLabel}
+              variant="outlined"
+              name="from_name"
+              size="small"
+              sx={{
+                input: { color: theme.palette.text.primary, fontSize: '0.85rem' },
+                label: { color: theme.palette.text.secondary, fontSize: '0.85rem' },
+                '& .MuiOutlinedInput-root': {
+                  '& fieldset': { borderColor: theme.palette.primary.main },
+                  '&:hover fieldset': { borderColor: theme.palette.primary.light },
+                  '&.Mui-focused fieldset': { borderColor: theme.palette.primary.dark },
+                },
+              }}
+            />
           </Grid>
-        </form>
+          <Grid item xs={12}>
+            <TextField
+              fullWidth
+              label={contact.emailLabel}
+              variant="outlined"
+              type="email"
+              name="from_email"
+              size="small"
+              sx={{
+                input: { color: theme.palette.text.primary, fontSize: '0.85rem' },
+                label: { color: theme.palette.text.secondary, fontSize: '0.85rem' },
+                '& .MuiOutlinedInput-root': {
+                  '& fieldset': { borderColor: theme.palette.primary.main },
+                  '&:hover fieldset': { borderColor: theme.palette.primary.light },
+                  '&.Mui-focused fieldset': { borderColor: theme.palette.primary.dark },
+                },
+              }}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              fullWidth
+              label={contact.messageLabel}
+              variant="outlined"
+              multiline
+              rows={4}
+              name="message"
+              size="small"
+              sx={{
+                input: { color: theme.palette.text.primary, fontSize: '0.85rem' },
+                label: { color: theme.palette.text.secondary, fontSize: '0.85rem' },
+                '& .MuiOutlinedInput-root': {
+                  '& fieldset': { borderColor: theme.palette.primary.main },
+                  '&:hover fieldset': { borderColor: theme.palette.primary.light },
+                  '&.Mui-focused fieldset': { borderColor: theme.palette.primary.dark },
+                },
+              }}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <Button
+              variant="contained"
+              type="submit"
+              sx={{
+                width: '150px', 
+                backgroundColor: theme.palette.primary.main,
+                color: theme.palette.primary.contrastText,
+                padding: '8px 16px',
+                fontSize: '0.85rem',
+                '&:hover': { backgroundColor: theme.palette.primary.light },
+                margin: '0 auto', 
+                display: 'block',
+              }}
+            >
+              {contact.sendButton}
+            </Button>
+          </Grid>
+        </Grid>
+
+        {messageStatus && (
+          <Typography
+            variant="body2"
+            sx={{
+              mt: 2,
+              color: messageStatus.success ? theme.palette.success.main : theme.palette.error.main,
+              textAlign: 'center',
+            }}
+          >
+            {messageStatus.text}
+          </Typography>
+        )}
+      </Box>
+
+      <Typography variant="h6" sx={{ color: theme.palette.secondary.main, fontWeight: 700, mb: 1 }}>
+        {contact.connectTitle}
+      </Typography>
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          flexDirection: 'row',
+          gap: 2, 
+        }}
+      >
+        {contact.links.map((link, index) => (
+          <IconButton
+            key={index}
+            component="a"
+            href={link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            sx={{
+              color: theme.palette.icon.main,
+              '&:hover': { color: theme.palette.icon.hover },
+            }}
+          >
+            <link.icon />
+          </IconButton>
+        ))}
+      </Box>
+      <Box sx={{ mt: 2 }}>
+        <Button
+          variant="contained"
+          href="/CV E.pdf"
+          download="CV E.pdf"
+          sx={{
+            backgroundColor: theme.palette.primary.main,
+            color: theme.palette.primary.contrastText,
+            padding: '8px 16px',
+            fontSize: '0.85rem',
+            '&:hover': { backgroundColor: theme.palette.primary.light },
+          }}
+        >
+          Download CV
+        </Button>
       </Box>
     </Container>
   );
