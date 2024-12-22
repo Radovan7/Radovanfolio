@@ -5,6 +5,9 @@ import BackgroundBg from './bg/BackgroundBg';
 import profile from '../profile'; 
 import { useTheme } from '@mui/material/styles';
 import { Helmet } from 'react-helmet'; 
+import About from './About';
+import Contact from './Contact';
+import Footer from './Footer';
 
 const Home = () => {
   const { home } = profile;
@@ -150,6 +153,9 @@ const Home = () => {
           ))}
         </Box>
       </Container>
+      <About/>
+      <Contact/>
+      <Footer/>
     </>
   );
 };
