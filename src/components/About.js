@@ -52,46 +52,9 @@ const About = () => {
             style={{ display: 'inline-block', color: theme.palette.text.secondary }} 
           />
         </Box>
-        <Grid container spacing={4} justifyContent="center">
-          <Grid item xs={12} md={10}>
-            <Card variant="outlined" sx={{ backgroundColor: theme.palette.background.paper, borderColor: theme.palette.divider }}>
-              <CardContent>
-                <Typography variant="h5" gutterBottom>
-                  My Skills
-                </Typography>
-                <Divider sx={{ mb: 2, bgcolor: theme.palette.divider }} />
-                <Grid container spacing={2} justifyContent="center">
-                  {skills.map((skill) => (
-                    <Grid 
-                      item 
-                      xs={6} 
-                      sm={4} 
-                      md={3} 
-                      key={skill.name}
-                      component={motion.div}
-                      variants={animationVariants}
-                      transition={{ duration: 0.5, delay: skills.indexOf(skill) * 0.2 }}
-                    >
-                      <Stack direction="row" spacing={2} alignItems="center" sx={{ mb: 1 }}>
-                        <Avatar sx={{ bgcolor: skill.color, width: 40, height: 40 }}>
-                          <skill.Icon size={20} color={theme.palette.icon.main} />
-                        </Avatar>
-                        <Stack spacing={0.5}>
-                          <Typography variant="body1" sx={{ color: theme.palette.text.primary }}>
-                            {skill.name}
-                          </Typography>
-                          <Chip label={skill.name} color="secondary" variant="outlined" size="small" />
-                        </Stack>
-                      </Stack>
-                    </Grid>
-                  ))}
-                </Grid>
-              </CardContent>
-            </Card>
-          </Grid>
-        </Grid>
 
-        <Box mt={6}>
+        {/* Notable Projects section */}
+        <Box mt={6} mb={6}> {}
           <Typography variant="h5" gutterBottom>
             Notable Projects
           </Typography>
@@ -140,6 +103,47 @@ const About = () => {
             ))}
           </Grid>
         </Box>
+
+        {/* My Skills section */}
+        <Grid container spacing={4} justifyContent="center">
+          <Grid item xs={12} md={10}>
+            <Card variant="outlined" sx={{ backgroundColor: theme.palette.background.paper, borderColor: theme.palette.divider }}>
+              <CardContent>
+                <Typography variant="h5" gutterBottom>
+                  My Skills
+                </Typography>
+                <Divider sx={{ mb: 2, bgcolor: theme.palette.divider }} />
+                <Grid container spacing={2} justifyContent="center">
+                  {skills.map((skill) => (
+                    <Grid 
+                      item 
+                      xs={6} 
+                      sm={4} 
+                      md={3} 
+                      key={skill.name}
+                      component={motion.div}
+                      variants={animationVariants}
+                      transition={{ duration: 0.5, delay: skills.indexOf(skill) * 0.2 }}
+                    >
+                      <Stack direction="row" spacing={2} alignItems="center" sx={{ mb: 1 }}>
+                        <Avatar sx={{ bgcolor: skill.color, width: 40, height: 40 }}>
+                          <skill.Icon size={20} color={theme.palette.icon.main} />
+                        </Avatar>
+                        <Stack spacing={0.5}>
+                          <Typography variant="body1" sx={{ color: theme.palette.text.primary }}>
+                            {skill.name}
+                          </Typography>
+                          <Chip label={skill.name} color="secondary" variant="outlined" size="small" />
+                        </Stack>
+                      </Stack>
+                    </Grid>
+                  ))}
+                </Grid>
+              </CardContent>
+            </Card>
+          </Grid>
+        </Grid>
+
       </Box>
     </Container>
   );

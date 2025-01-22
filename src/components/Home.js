@@ -20,7 +20,6 @@ const Home = () => {
 
   return (
     <>
-      {}
       <Helmet>
         <meta name="description" content="Radovan's Portfolio - Frontend Developer | Open Source Enthusiast" />
         <meta name="keywords" content="portfolio, frontend developer, open source, React, JavaScript, web development" />
@@ -65,8 +64,28 @@ const Home = () => {
                   border: `4px solid ${theme.palette.primary.main}`, 
                   boxShadow: `0 0 20px ${theme.palette.primary.main}80`, 
                   margin: 'auto',
+                  mb: 12,  
                 }}
               />
+            </Box>
+            <Box sx={{ display: 'flex', justifyContent: 'center', mt: 2 }}>
+              {home.socialLinks.map((link, index) => (
+                <motion.a
+                  key={index}
+                  whileHover={{ color: theme.palette.icon.hover, transition: { duration: 0.1 } }}
+                  whileTap={{ scale: 0.9 }}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    color: theme.palette.icon.main, 
+                    margin: '0 10px', 
+                    transition: 'color 0.3s',
+                  }}
+                >
+                  <link.icon size={32} />
+                </motion.a>
+              ))}
             </Box>
           </Grid>
           <Grid item xs={12} md={6}>
@@ -110,6 +129,7 @@ const Home = () => {
                 mb: 4,
                 maxWidth: '600px',
                 margin: 'auto',
+                textAlign: 'justify',
               }}
             >
               {home.description}
@@ -128,6 +148,7 @@ const Home = () => {
                 textTransform: 'uppercase',
                 letterSpacing: 1,
                 borderRadius: '30px',
+                mt: 4,
                 '&:hover': {
                   backgroundColor: theme.palette.primary.dark,
                 },
@@ -137,21 +158,6 @@ const Home = () => {
             </Button>
           </Grid>
         </Grid>
-        <Box sx={{ mt: 4 }}>
-          {home.socialLinks.map((link, index) => (
-            <motion.a
-              key={index}
-              whileHover={{ color: theme.palette.icon.hover, transition: { duration: 0.1 } }}
-              whileTap={{ scale: 0.9 }}
-              href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ color: theme.palette.icon.main, margin: '0 10px', transition: 'color 0.3s',}}
-            >
-              <link.icon size={32}/>
-            </motion.a>
-          ))}
-        </Box>
       </Container>
       <About/>
       <Contact/>
