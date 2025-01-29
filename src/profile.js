@@ -46,12 +46,12 @@ const profile = {
         {
             title: 'To-Do List',
             description: 'A simple and interactive To-Do List application built with HTML, CSS, and JavaScript, designed to help manage daily tasks efficiently.',
-            link: 'https://github.com/Radovan7/To-Do-list.git',
+            link: 'https://todolist-i1a0ytrk5-radovans-projects-54af0169.vercel.app',
         },
         {
             title: 'User Posts',
             description: 'A React app that fetches and displays user information and posts from the JSONPlaceholder API, allowing users to interact with posts and view user data.',
-            link: 'https://github.com/Radovan7/User-posts.git',
+            link: 'https://user-post-7ulrdecy5-radovans-projects-54af0169.vercel.app',
         }
         
     ],
