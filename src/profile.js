@@ -1,14 +1,11 @@
 import { 
-  FaJs, FaReact, FaNodeJs, FaCss3Alt, FaGit, FaGithub, 
-  FaLinkedin, FaDiscord, FaEnvelope 
+    FaJs, FaReact, FaNodeJs, FaCss3Alt, FaGit, FaGithub, 
+    FaLinkedin, FaDiscord, FaEnvelope, FaAws 
 } from 'react-icons/fa';
 import { 
-  SiMui, SiTypescript, SiNextdotjs 
+    SiMui, SiTypescript, SiNextdotjs, SiOpenai, SiTailwindcss 
 } from 'react-icons/si';
 import myPhoto from './components/assets/profile.photo.webp';
-
-
-
 
 const profile = {
     home: {
@@ -18,9 +15,9 @@ const profile = {
         description: 'Welcome to my portfolio! I am a passionate frontend developer with a keen interest in open-source technologies and innovative solutions. Explore my projects and connect with me to discuss potential collaborations or opportunities.',
         buttonText: 'Explore My Work',
         socialLinks: [
-          { href: 'https://github.com/Radovan7', icon: FaGithub }, 
-          { href: 'https://www.linkedin.com/in/radovan-scekic-406880264/', icon: FaLinkedin },
-          { href: 'https://discord.com/users/1019683427034857492521021763073867822', icon: FaDiscord },
+            { href: 'https://github.com/Radovan7', icon: FaGithub }, 
+            { href: 'https://www.linkedin.com/in/radovan-scekic-406880264/', icon: FaLinkedin },
+            { href: 'https://discord.com/users/1019683427034857492521021763073867822', icon: FaDiscord },
         ],
     },
     about: {
@@ -35,7 +32,11 @@ const profile = {
         { name: 'Material UI', color: '#35c2e5', Icon: SiMui },
         { name: 'TypeScript', color: '#3178c6', Icon: SiTypescript },
         { name: 'Next.js', color: '#000000', Icon: SiNextdotjs },
-        { name: 'Git', color: '#f05032', Icon: FaGit },  
+        { name: 'Git', color: '#f05032', Icon: FaGit },
+        { name: 'AWS', color: '#FF9900', Icon: FaAws },
+        { name: 'TailwindCSS', color: '#38B2AC', Icon: SiTailwindcss },
+        { name: 'GitHub Copilot', color: '#000000', Icon: FaGithub },
+        { name: 'ChatGPT', color: '#00A67E', Icon: SiOpenai },
     ],
     projects: [
         {
@@ -53,7 +54,6 @@ const profile = {
             description: 'A React app that fetches and displays user information and posts from the JSONPlaceholder API, allowing users to interact with posts and view user data.',
             link: 'https://user-post-7ulrdecy5-radovans-projects-54af0169.vercel.app',
         }
-        
     ],
     contact: {
         title: "Contact Me",
@@ -71,5 +71,5 @@ const profile = {
         ]
     },
 };
-  
+
 export default profile;
