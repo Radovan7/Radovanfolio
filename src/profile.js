@@ -44,9 +44,9 @@ const profile = {
             link: 'https://webbyrasodermalm.se/',
         },
         {
-            title: 'To-Do List',
-            description: 'A simple and interactive To-Do List application built with HTML, CSS, and JavaScript, designed to help manage daily tasks efficiently.',
-            link: 'https://todolist-i1a0ytrk5-radovans-projects-54af0169.vercel.app',
+            title: 'S2Bygg',
+            description: 'A modern and fully responsive website for a construction company, built with Next.js and styled using TailwindCSS. It showcases the company’s services, portfolio, and contact information with a clean and professional design.',
+            link: 'https://s2bygg.com/',
         },
         {
             title: 'User Posts',

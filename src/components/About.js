@@ -53,7 +53,6 @@ const About = () => {
           />
         </Box>
 
-        {/* Notable Projects section */}
         <Box mt={6} mb={6}> {}
           <Typography variant="h5" gutterBottom>
             Notable Projects
@@ -104,7 +103,6 @@ const About = () => {
           </Grid>
         </Box>
 
-        {/* My Skills section */}
         <Grid container spacing={4} justifyContent="center">
           <Grid item xs={12} md={10}>
             <Card variant="outlined" sx={{ backgroundColor: theme.palette.background.paper, borderColor: theme.palette.divider }}>
