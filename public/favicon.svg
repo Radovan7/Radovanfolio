@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="512" height="512" rx="128" fill="#2196F3"/>
+  
+  <!-- Portfolio Icon -->
+  <g transform="translate(96, 96) scale(0.625)">
+    <!-- Briefcase -->
+    <path d="M320 128H192c-17.7 0-32 14.3-32 32v32H64c-17.7 0-32 14.3-32 32v192c0 17.7 14.3 32 32 32h384c17.7 0 32-14.3 32-32V224c0-17.7-14.3-32-32-32h-96v-32c0-17.7-14.3-32-32-32z" fill="white"/>
+    
+    <!-- Handle -->
+    <path d="M256 96c-17.7 0-32 14.3-32 32h64c0-17.7-14.3-32-32-32z" fill="white"/>
+    
+    <!-- Code Symbol -->
+    <path d="M160 256l48 48-48 48M352 256l-48 48 48 48" stroke="white" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg> 

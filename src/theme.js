@@ -1,92 +1,115 @@
-import { createTheme } from '@mui/material/styles';
+import { createTheme } from "@mui/material/styles";
 
-const theme = createTheme({
-  palette: {
-    mode: 'dark',
-    primary: {
-      main: '#87CEEB', 
+const getTheme = (mode) =>
+  createTheme({
+    palette: {
+      mode,
+      primary: {
+        main: "#2196f3",
+        light: "#64b5f6",
+        dark: "#1976d2",
+      },
+      secondary: {
+        main: "#f50057",
+        light: "#ff4081",
+        dark: "#c51162",
+      },
+      background: {
+        default: mode === "dark" ? "#121212" : "#f5f5f5",
+        paper: mode === "dark" ? "#1e1e1e" : "#ffffff",
+      },
+      text: {
+        primary: mode === "dark" ? "#ffffff" : "#1a1a1a",
+        secondary: mode === "dark" ? "#b0b0b0" : "#424242",
+      },
+      divider: "#87CEEB",
+      icon: {
+        main: mode === "dark" ? "#ffffff" : "#424242",
+        hover: mode === "dark" ? "#64b5f6" : "#1976d2",
+      },
+      info: {
+        main: "#87CEEB",
+      },
     },
-    secondary: {
-      main: '#b4b4b4',
+    typography: {
+      fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+      h1: {
+        fontWeight: 700,
+        color: mode === "dark" ? "#ffffff" : "#1a1a1a",
+      },
+      h2: {
+        fontWeight: 700,
+        color: mode === "dark" ? "#ffffff" : "#1a1a1a",
+      },
+      h3: {
+        fontWeight: 600,
+        color: mode === "dark" ? "#ffffff" : "#1a1a1a",
+      },
+      h4: {
+        fontWeight: 600,
+        color: mode === "dark" ? "#ffffff" : "#1a1a1a",
+      },
+      h5: {
+        fontWeight: 600,
+        color: mode === "dark" ? "#ffffff" : "#1a1a1a",
+      },
+      h6: {
+        fontWeight: 600,
+        color: mode === "dark" ? "#ffffff" : "#1a1a1a",
+      },
+      body1: {
+        fontWeight: 500,
+        color: mode === "dark" ? "#ffffff" : "#1a1a1a",
+      },
+      body2: {
+        fontWeight: 500,
+        color: mode === "dark" ? "#b0b0b0" : "#424242",
+      },
     },
-    background: {
-      default: '#000000', 
-      paper: '#1a1a1a', 
-    },
-    text: {
-      primary: '#87CEEB',
-      secondary: '#b6b6b6',
-    },
-    divider: '#87CEEB', 
-    icon: {
-      main: '#ffffff',
-      hover: '#87CEEB', 
-    },
-    info: {
-      main: '#87CEEB', 
-    },
-  },
-  typography: {
-    fontFamily: '"Courier New", Courier, monospace',
-    h1: { fontWeight: 700, fontSize: '3rem', color: '#87CEEB' },
-    h2: { fontWeight: 700, fontSize: '2.5rem', color: '#87CEEB' },
-    h3: { fontWeight: 700, fontSize: '2rem', color: '#87CEEB' },
-    h4: { fontWeight: 700, fontSize: '1.75rem', color: '#87CEEB' },
-    h5: { fontWeight: 700, fontSize: '1.5rem', color: '#87CEEB' },
-    h6: { fontWeight: 700, fontSize: '1.25rem', color: '#87CEEB' },
-    body1: { color: '#ffffff' },
-    body2: { color: '#cccccc' },
-  },
-  components: {
-    MuiButton: {
-      styleOverrides: {
-        root: {
-          textTransform: 'none',
-          borderRadius: '8px',
+    components: {
+      MuiButton: {
+        styleOverrides: {
+          root: {
+            textTransform: "none",
+            fontWeight: 600,
+          },
+          contained: {
+            "&:hover": { backgroundColor: "#6ab7db" },
+          },
+          outlined: {
+            "&:hover": {
+              borderColor: "#6ab7db",
+            },
+          },
         },
-        contained: {
-          backgroundColor: '#87CEEB', 
-          '&:hover': { backgroundColor: '#6ab7db' }, 
+      },
+      MuiTextField: {
+        styleOverrides: {
+          root: {
+            "& .MuiOutlinedInput-root": {
+              "& fieldset": { borderColor: "#87CEEB" },
+              "&:hover fieldset": { borderColor: "#6ab7db" },
+              "&.Mui-focused fieldset": { borderColor: "#6ab7db" },
+            },
+          },
         },
-        outlined: {
-          borderColor: '#87CEEB', 
-          color: '#87CEEB',
-          '&:hover': {
-            borderColor: '#6ab7db', 
+      },
+      MuiCard: {
+        styleOverrides: {
+          root: {
+            borderRadius: "12px",
+            border: "2px solid #87CEEB",
+          },
+        },
+      },
+      MuiDivider: {
+        styleOverrides: {
+          root: {
+            backgroundColor: "#87CEEB",
           },
         },
       },
     },
-    MuiTextField: {
-      styleOverrides: {
-        root: {
-          '& .MuiInputBase-input': { color: '#ffffff' },
-          '& .MuiOutlinedInput-root': {
-            '& fieldset': { borderColor: '#87CEEB' }, 
-            '&:hover fieldset': { borderColor: '#6ab7db' }, 
-            '&.Mui-focused fieldset': { borderColor: '#6ab7db' }, 
-          },
-        },
-      },
-    },
-    MuiCard: {
-      styleOverrides: {
-        root: {
-          backgroundColor: '#1a1a1a',
-          color: '#ffffff',
-          borderRadius: '12px',
-          border: '2px solid #87CEEB', 
-        },
-      },
-    },
-    MuiDivider: {
-      styleOverrides: {
-        root: {
-          backgroundColor: '#87CEEB', 
-        },
-      },
-    },
-  },
-});
+  });
 
-export default theme;
+export default getTheme;
