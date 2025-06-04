@@ -1,6 +1,6 @@
-import React from 'react';
-import { Box, Typography, Link } from '@mui/material';
-import { useTheme } from '@mui/material/styles';
+import React from "react";
+import { Box, Typography } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 
 const Footer = () => {
   const theme = useTheme();
@@ -8,27 +8,19 @@ const Footer = () => {
     <Box
       component="footer"
       sx={{
-        zIndex:11,
-        position: 'fixed',
-        left: 0,
-        right: 0,
-        bottom: 0,
+        position: "relative",
         backgroundColor: theme.palette.background.default,
-        color: '#ffffff',
+        color: theme.palette.text.primary,
         py: 3,
-        textAlign: 'center',
+        textAlign: "center",
         borderTop: `1px solid ${theme.palette.divider}`,
+        mt: "auto",
       }}
     >
-      <Typography  variant="body2" sx={{ mb: 1 }}>
+      <Typography variant="body2" sx={{ mb: 1 }}>
         © {new Date().getFullYear()} Portfolio. All rights reserved.
       </Typography>
-      <Typography variant="body2">
-        Built with ❤️ by{' '}
-        <Link href="https://github.com/Radovan7"  variant="body2" target="_blank" rel="noopener noreferrer">
-          Radovan
-        </Link>
-      </Typography>
+      <Typography variant="body2">Built with ❤️ by Radovan</Typography>
     </Box>
   );
 };

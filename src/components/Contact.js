@@ -1,10 +1,18 @@
-import React from 'react';
-import { Container, Typography, Box, TextField, Button, Grid, IconButton } from '@mui/material';
-import { motion } from 'framer-motion';
-import { TypeAnimation } from 'react-type-animation';
-import { useTheme } from '@mui/material/styles';
-import profile from '../profile';
-import emailjs from 'emailjs-com';
+import React from "react";
+import {
+  Container,
+  Typography,
+  Box,
+  TextField,
+  Button,
+  Grid,
+  IconButton,
+} from "@mui/material";
+import { motion } from "framer-motion";
+import { TypeAnimation } from "react-type-animation";
+import { useTheme } from "@mui/material/styles";
+import profile from "../profile";
+import emailjs from "emailjs-com";
 
 const Contact = () => {
   const { contact } = profile;
@@ -13,44 +21,54 @@ const Contact = () => {
   const sendEmail = (e) => {
     e.preventDefault();
 
-    emailjs.sendForm(
-      process.env.REACT_APP_EMAILJS_SERVICE_ID,
-      process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
-      e.target,
-      process.env.REACT_APP_EMAILJS_USER_ID
-    )
-    .then((result) => {
-      console.log(result.text);
-      alert('Message sent successfully!');
-    }, (error) => {
-      console.log(error.text);
-      alert('Failed to send message. Please try again.');
-    });
+    emailjs
+      .sendForm(
+        process.env.REACT_APP_EMAILJS_SERVICE_ID,
+        process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
+        e.target,
+        process.env.REACT_APP_EMAILJS_USER_ID
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+          alert("Message sent successfully!");
+        },
+        (error) => {
+          console.log(error.text);
+          alert("Failed to send message. Please try again.");
+        }
+      );
   };
 
   return (
     <Container
+      id="Contact"
       maxWidth="false"
       component={motion.div}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
       sx={{
-        position: 'relative',
+        position: "relative",
         zIndex: 100,
-        minHeight: '100vh',
-        display: 'flex',
-        backgroundColor: theme.palette.background.default, 
-        justifyContent: 'center',
-        alignItems: 'center',
+        minHeight: { xs: "auto", md: "100vh" },
+        display: "flex",
+        backgroundColor: theme.palette.background.default,
+        justifyContent: "center",
+        alignItems: "center",
         color: theme.palette.text.primary,
-        textAlign: 'center',
-        py: 8,
-        px: 4,
+        textAlign: "center",
+        py: { xs: 4, md: 8 },
+        px: { xs: 2, md: 4 },
       }}
     >
       <Box width="100%" maxWidth="md">
-        <Typography variant="h2" component="h1" gutterBottom sx={{ fontWeight: 700 }}>
+        <Typography
+          variant="h2"
+          component="h1"
+          gutterBottom
+          sx={{ fontWeight: 700 }}
+        >
           {contact.title}
         </Typography>
         <TypeAnimation
@@ -58,7 +76,11 @@ const Contact = () => {
           wrapper="span"
           cursor={true}
           repeat={0}
-          style={{ display: 'inline-block', marginBottom: '30px', color: theme.palette.text.secondary }} 
+          style={{
+            display: "inline-block",
+            marginBottom: "30px",
+            color: theme.palette.text.secondary,
+          }}
         />
 
         <form onSubmit={sendEmail}>
@@ -69,18 +91,21 @@ const Contact = () => {
                 label={contact.nameLabel}
                 variant="outlined"
                 name="from_name"
+                required
                 sx={{
-                  input: { color: theme.palette.text.primary }, 
-                  label: { color: theme.palette.text.secondary },
-                  '& .MuiOutlinedInput-root': {
-                    '& fieldset': {
-                      borderColor: theme.palette.primary.main, 
+                  "& .MuiInputBase-input": {
+                    color: theme.palette.text.primary,
+                  },
+                  "& .MuiInputLabel-root": {
+                    color: theme.palette.text.secondary,
+                  },
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": { borderColor: theme.palette.primary.main },
+                    "&:hover fieldset": {
+                      borderColor: theme.palette.primary.light,
                     },
-                    '&:hover fieldset': {
-                      borderColor: theme.palette.primary.light, 
-                    },
-                    '&.Mui-focused fieldset': {
-                      borderColor: theme.palette.primary.dark, 
+                    "&.Mui-focused fieldset": {
+                      borderColor: theme.palette.primary.dark,
                     },
                   },
                   mb: 3,
@@ -92,17 +117,20 @@ const Contact = () => {
                 variant="outlined"
                 type="email"
                 name="from_email"
+                required
                 sx={{
-                  input: { color: theme.palette.text.primary },
-                  label: { color: theme.palette.text.secondary },
-                  '& .MuiOutlinedInput-root': {
-                    '& fieldset': {
-                      borderColor: theme.palette.primary.main,
-                    },
-                    '&:hover fieldset': {
+                  "& .MuiInputBase-input": {
+                    color: theme.palette.text.primary,
+                  },
+                  "& .MuiInputLabel-root": {
+                    color: theme.palette.text.secondary,
+                  },
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": { borderColor: theme.palette.primary.main },
+                    "&:hover fieldset": {
                       borderColor: theme.palette.primary.light,
                     },
-                    '&.Mui-focused fieldset': {
+                    "&.Mui-focused fieldset": {
                       borderColor: theme.palette.primary.dark,
                     },
                   },
@@ -116,46 +144,64 @@ const Contact = () => {
                 multiline
                 rows={6}
                 name="message"
+                required
                 sx={{
-                  input: { color: theme.palette.text.primary },
-                  label: { color: theme.palette.text.secondary },
-                  '& .MuiOutlinedInput-root': {
-                    '& fieldset': {
-                      borderColor: theme.palette.primary.main,
-                    },
-                    '&:hover fieldset': {
+                  "& .MuiInputBase-input": {
+                    color: theme.palette.text.primary,
+                  },
+                  "& .MuiInputLabel-root": {
+                    color: theme.palette.text.secondary,
+                  },
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": { borderColor: theme.palette.primary.main },
+                    "&:hover fieldset": {
                       borderColor: theme.palette.primary.light,
                     },
-                    '&.Mui-focused fieldset': {
+                    "&.Mui-focused fieldset": {
                       borderColor: theme.palette.primary.dark,
                     },
                   },
                   mb: 3,
                 }}
               />
-              <Grid item xs={12} sx={{ width: 'fit-content', mx: 'auto' }}>
+              <Box sx={{ display: "flex", justifyContent: "center" }}>
                 <Button
                   variant="contained"
                   type="submit"
                   sx={{
-                    backgroundColor: theme.palette.primary.main, 
-                    color: theme.palette.primary.contrastText, 
-                    '&:hover': {
+                    backgroundColor: theme.palette.primary.main,
+                    color: theme.palette.primary.contrastText,
+                    "&:hover": {
                       backgroundColor: theme.palette.primary.light,
                     },
-                    width: '180px', 
+                    width: "180px",
                   }}
                 >
                   {contact.sendButton}
                 </Button>
-              </Grid>
+              </Box>
             </Grid>
 
-            <Grid item xs={12} md={6} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-              <Typography variant="h6" gutterBottom sx={{ color: theme.palette.secondary.main, fontWeight: 700 }}>
+            <Grid
+              item
+              xs={12}
+              md={6}
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                mt: { xs: 4, md: 0 },
+              }}
+            >
+              <Typography
+                variant="h6"
+                gutterBottom
+                sx={{ color: theme.palette.secondary.main, fontWeight: 700 }}
+              >
                 {contact.connectTitle}
               </Typography>
-              <Box sx={{ display: 'flex', justifyContent: 'center', mt: 2 }}>
+              <Box sx={{ display: "flex", justifyContent: "center", mt: 2 }}>
                 {contact.links.map((link, index) => (
                   <IconButton
                     key={index}
@@ -166,8 +212,8 @@ const Contact = () => {
                     sx={{
                       mx: 1,
                       color: theme.palette.icon.main,
-                      '&:hover': {
-                        color: theme.palette.icon.hover, 
+                      "&:hover": {
+                        color: theme.palette.icon.hover,
                       },
                     }}
                   >
@@ -178,15 +224,15 @@ const Contact = () => {
               <Box sx={{ mt: 4 }}>
                 <Button
                   variant="contained"
-                  href="/CV E.pdf" 
-                  download="CV E.pdf" 
+                  href="/CV E.pdf"
+                  download="CV E.pdf"
                   sx={{
-                    backgroundColor: theme.palette.primary.main, 
-                    color: theme.palette.primary.contrastText, 
-                    '&:hover': {
+                    backgroundColor: theme.palette.primary.main,
+                    color: theme.palette.primary.contrastText,
+                    "&:hover": {
                       backgroundColor: theme.palette.primary.light,
                     },
-                    width: '150px', 
+                    width: "150px",
                   }}
                 >
                   Download CV
