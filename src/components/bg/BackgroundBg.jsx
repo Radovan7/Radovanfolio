@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import Particles from "react-tsparticles";
 import { loadSlim } from "tsparticles-slim";
-import { useTheme } from '@mui/material/styles';
+import { useTheme } from "@mui/material/styles";
 
 const BackgroundBg = ({ isDarkMode }) => {
   const theme = useTheme();
@@ -10,8 +10,7 @@ const BackgroundBg = ({ isDarkMode }) => {
     await loadSlim(engine);
   }, []);
 
-  const particlesLoaded = useCallback(async (container) => {
-  }, []);
+  const particlesLoaded = useCallback(async (container) => {}, []);
 
   return (
     <Particles
@@ -55,7 +54,7 @@ const BackgroundBg = ({ isDarkMode }) => {
             color: theme.palette.primary.main,
             distance: 175,
             enable: true,
-            opacity: 0.5,
+            opacity: isDarkMode ? 0.5 : 0.3,
             width: 1.5,
           },
           move: {
@@ -73,10 +72,10 @@ const BackgroundBg = ({ isDarkMode }) => {
               enable: true,
               area: 800,
             },
-            value: 100,
+            value: isDarkMode ? 100 : 80,
           },
           opacity: {
-            value: 0.6,
+            value: isDarkMode ? 0.6 : 0.4,
           },
           shape: {
             type: "circle",
@@ -88,8 +87,11 @@ const BackgroundBg = ({ isDarkMode }) => {
         detectRetina: true,
       }}
       style={{
+        position: "fixed",
         top: 0,
         left: 0,
+        width: "100%",
+        height: "100%",
         zIndex: -1,
       }}
     />
